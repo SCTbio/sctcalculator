@@ -17,7 +17,7 @@ function esc(value: string) {
 }
 
 export function renderResult(data: ResultViewData) {
-    const { collectionPlace, collectionDateTime, processingDateTime, labLocation } = data;
+    const { collectionPlace, collectionDateTime, processingDateTime, labLocation, result } = data;
 
     return `<!doctype html>
 <html lang="en">
