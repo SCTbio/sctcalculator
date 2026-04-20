@@ -1,0 +1,6 @@
+name = "sctcalculator"
+main = "src/app.ts"
+compatibility_date = "2024-01-01"
+[observability]
+enabled = true
+head_sampling_rate = 1
