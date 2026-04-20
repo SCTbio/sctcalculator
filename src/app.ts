@@ -7,6 +7,7 @@ app.get("/", (c) => {
     return c.html(renderForm({ action: "/calculate" }));
 });
 
+
 app.post("/calculate", async (c) => {
     const body = await c.req.parseBody();
 
