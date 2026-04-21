@@ -15,7 +15,21 @@ export function dateTime(dateTime: string): string {
 export function convertToTimezone(utcNowUnix: number,targetTz: CityTimeResult) {
     const localUnix = utcNowUnix + targetTz.totalOffsetSeconds;
 
-    const dt= new Date(localUnix * 1000).toISOString();
+    return  new Date(localUnix * 1000).toISOString();
+}
 
-    return dateTime(dt) +" "+ targetTz.timeZoneName;
+export function diffUtcHoursMinutesIso(startUtcIso: string, endUtcIso: string) {
+    const startMs = Date.parse(startUtcIso);
+    const endMs = Date.parse(endUtcIso);
+
+    if (Number.isNaN(startMs) || Number.isNaN(endMs)) {
+        throw new Error("Invalid UTC ISO datetime string (expected ...Z).");
+    }
+
+    const diffSeconds = Math.abs(endMs - startMs) / 1000;
+
+    return {
+        hours: Math.floor(diffSeconds / 3600),
+        minutes: Math.floor((diffSeconds % 3600) / 60),
+    };
 }
