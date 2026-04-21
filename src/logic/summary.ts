@@ -38,11 +38,25 @@ export function renderForm(opts?: {
 
 <body class="bg-light">
   <!-- Top banner -->
-  <div class="py-5 bg-secondary bg-opacity-10 border-bottom">
-    <div class="container">
-      <h1 class="text-center display-5 fw-semibold m-0">SCT Leukapheresis Calculator</h1>
-    </div>
+<div class="py-5 bg-secondary bg-opacity-10 border-bottom">
+  <div class="container text-center">
+
+    <h1 class="display-5 fw-semibold mb-3">
+      SCT Leukapheresis Calculator
+    </h1>
+
+    <!-- Horizontal links -->
+    <ul class="nav justify-content-center gap-3">
+      <li class="nav-item">
+        <a class="nav-link" href="/">Summary</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/">Prediction</a>
+      </li>
+    </ul>
+
   </div>
+</div>
 
   <main class="container">
     <div class="row justify-content-center">

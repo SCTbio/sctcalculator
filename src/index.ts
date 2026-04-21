@@ -9,11 +9,11 @@ type Env = {
     GOOGLE_MAPS_API_KEY: string;
 };
 
-const app = new Hono<{ Bindings: Env }>();
+const index = new Hono<{ Bindings: Env }>();
 
-app.get("/", (c) => c.html(renderForm({action: "/calculate"})));
+index.get("/", (c) => c.html(renderForm({action: "/calculate"})));
 
-app.post("/calculate", async (c) => {
+index.post("/calculate", async (c) => {
     const body = await c.req.parseBody();
 
     const collectionPlace = typeof body.collectionPlace === "string" ? body.collectionPlace : "";
@@ -111,4 +111,4 @@ app.post("/calculate", async (c) => {
     );
 });
 
-export default app;
+export default index;
