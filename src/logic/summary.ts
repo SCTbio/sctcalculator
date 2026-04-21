@@ -51,7 +51,7 @@ export function renderForm(opts?: {
         <a class="nav-link" href="/">Summary</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/">Prediction</a>
+        <a class="nav-link" href="/prediction">Prediction</a>
       </li>
     </ul>
 

@@ -33,3 +33,10 @@ export function diffUtcHoursMinutesIso(startUtcIso: string, endUtcIso: string) {
         minutes: Math.floor((diffSeconds % 3600) / 60),
     };
 }
+
+export function addHoursToUtcIso(utcIso: string, hoursToAdd: number): string {
+    const date = new Date(utcIso);
+    date.setUTCSeconds(date.getUTCSeconds() + hoursToAdd * 3600);
+    return date.toISOString();
+}
+``
