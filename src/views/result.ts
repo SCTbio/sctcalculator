@@ -1,4 +1,3 @@
-// src/views/result.ts
 
 export type ResultViewData = {
     collectionPlace: string;
