@@ -27,7 +27,7 @@ export function renderForm(opts?: {
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sotio Leukapheresis Calculator</title>
+  <title>SCT Leukapheresis Calculator</title>
 
   <!-- Bootstrap 5 -->
   <link
