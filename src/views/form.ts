@@ -40,7 +40,7 @@ export function renderForm(opts?: {
   <!-- Top banner -->
   <div class="py-5 bg-secondary bg-opacity-10 border-bottom">
     <div class="container">
-      <h1 class="text-center display-5 fw-semibold m-0">Sotio Leukapheresis Calculator</h1>
+      <h1 class="text-center display-5 fw-semibold m-0">SCT Leukapheresis Calculator</h1>
     </div>
   </div>
 
