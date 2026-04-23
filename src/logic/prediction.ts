@@ -5,14 +5,6 @@ type FormValues = {
     labLocation?: string;
 };
 
-function esc(value: string) {
-    return value
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-}
 
 export function predictionForm(opts?: {
     action?: string;
@@ -66,11 +58,11 @@ export function predictionForm(opts?: {
 
           ${
         opts?.error
-            ? `<div class="alert alert-danger" role="alert">${esc(opts.error)}</div>`
+            ? `<div class="alert alert-danger" role="alert">${opts.error}</div>`
             : ""
     }
 
-          <form method="post" action="${esc(action)}" class="bg-white p-4 p-md-5 rounded-3 shadow-sm">
+          <form method="post" action="${action}" class="bg-white p-4 p-md-5 rounded-3 shadow-sm">
             <!-- Collection place -->
             <div class="mb-3">
               <label for="collectionPlace" class="form-label">Collection Place:</label>
@@ -79,7 +71,7 @@ export function predictionForm(opts?: {
                 class="form-control"
                 id="collectionPlace"
                 name="collectionPlace"
-                value="${v.collectionPlace ? esc(v.collectionPlace) : ""}"
+                value="${v.collectionPlace ? v.collectionPlace : ""}"
                 autocomplete="off"
               />
             </div>
@@ -93,7 +85,7 @@ export function predictionForm(opts?: {
                 class="form-control"
                 id="collectionDateTime"
                 name="collectionDateTime"
-                value="${v.collectionDateTime ? esc(v.collectionDateTime) : ""}"
+                value="${v.collectionDateTime ? v.collectionDateTime : ""}"
               />
             </div>
 

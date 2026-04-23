@@ -1,37 +1,26 @@
 
 export type ResultViewData = {
-    collectionPlace: string;
-    collectionDateTimeFormatted: string;
-    processingDateTimeFormatted: string;
-    labLocation: string;
-    googleCollectionPlace: string;
-    googleLabLocationPlace: string;
-    googleCollectionTZ: string;
-    googleCollectionTimeDateFormatted: string;
+    colCity:string;
+    laboratoryLocation:string;
+    collectionTimeAndDate:string;
+    productionStartedAt:string;
+    days:number;
     hours:number;
     minutes:number;
+    roundedTimeNeeded:string;
 };
 
-function esc(value: string) {
-    return value
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-}
 
 export function renderResult(data: ResultViewData) {
     const {
-        collectionDateTimeFormatted,
-        processingDateTimeFormatted,
-        labLocation,
-        googleCollectionPlace,
-        googleCollectionTimeDateFormatted,
-        googleCollectionTZ,
-        googleLabLocationPlace,
+        colCity,
+        laboratoryLocation,
+        collectionTimeAndDate,
+        productionStartedAt,
+        days,
         hours,
         minutes,
+        roundedTimeNeeded,
     } = data;
 
     return `<!doctype html>
@@ -61,14 +50,11 @@ export function renderResult(data: ResultViewData) {
           <tbody>
             <tr>
               <th class="w-50">Collection city</th>
-              <td>${esc(googleCollectionPlace)}</td>
+              <td>${colCity}</td>
             </tr>
             <tr>
               <th>Collection time and date</th>
-              <td>
-                ${esc(googleCollectionTimeDateFormatted)}
-                <span class="text-muted">(${esc(googleCollectionTZ)})</span>
-              </td>
+                 <td>${collectionTimeAndDate}</td>
             </tr>
           </tbody>
         </table>
@@ -85,20 +71,26 @@ export function renderResult(data: ResultViewData) {
           <tbody>
             <tr>
               <th class="w-50">Laboratory location</th>
-              <td>${esc(googleLabLocationPlace || labLocation)}</td>
+            <td>${laboratoryLocation}</td>
             </tr>
             <tr>
               <th>Collection time and date</th>
-              <td>${esc(collectionDateTimeFormatted)}</td>
+                  <td>${collectionTimeAndDate}</td>
             </tr>
             <tr>
               <th>Production started at</th>
-              <td>${esc(processingDateTimeFormatted)}</td>
+                   <td>${productionStartedAt}</td>
             </tr>
             <tr>
               <th>Exact time needed for processing</th>
-              <td>${hours} hours ${minutes} minutes </td>
+              <td>${days} days ${hours} hours ${minutes} minutes </td>
             </tr>
+            
+               <tr>
+              <th>Rounded time needed for processing</th>
+             <td>${roundedTimeNeeded}</td>
+            </tr>
+            
           </tbody>
         </table>
       </div>
