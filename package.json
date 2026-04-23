@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "@googlemaps/google-maps-services-js": "^3.4.2"
+    "@googlemaps/google-maps-services-js": "^3.4.2",
+    "@js-temporal/polyfill": "^0.5.1"
   }
 }

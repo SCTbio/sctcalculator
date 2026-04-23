@@ -1,14 +1,11 @@
 
 export type ResultViewData = {
-    collectionPlace: string;
-    productionMustStartByDate: string;
-    collectionDateTimeFormatted: string;
-    labLocation: string;
-    googleCollectionPlace: string;
-    googleLabLocationPlace: string;
-    googleCollectionTZ: string;
-    hoursToProcess: string;
-    googleCollectionTimeDateFormatted: string;
+    collectionPlaceGoogle:string;
+    labLocation:string;
+    hoursToProcess:string;
+    productionMustStartBy:string;
+    collectionTimeAndDateLab:string;
+    collectionTimeAndDateCol:string;
 };
 
 function esc(value: string) {
@@ -22,14 +19,12 @@ function esc(value: string) {
 
 export function renderResultProcessing(data: ResultViewData) {
     const {
-        collectionDateTimeFormatted,
+        collectionPlaceGoogle,
         labLocation,
-        googleCollectionPlace,
-        productionMustStartByDate,
-        googleCollectionTimeDateFormatted,
-        googleCollectionTZ,
-        googleLabLocationPlace,
         hoursToProcess,
+        productionMustStartBy,
+        collectionTimeAndDateLab,
+        collectionTimeAndDateCol,
     } = data;
 
     return `<!doctype html>
@@ -59,13 +54,12 @@ export function renderResultProcessing(data: ResultViewData) {
           <tbody>
             <tr>
               <th class="w-50">Collection city</th>
-              <td>${esc(googleCollectionPlace)}</td>
+              <td>${esc(collectionPlaceGoogle)}</td>
             </tr>
             <tr>
               <th>Collection time and date</th>
               <td>
-                ${esc(googleCollectionTimeDateFormatted)}
-                <span class="text-muted">(${esc(googleCollectionTZ)})</span>
+                ${esc(collectionTimeAndDateCol)}
               </td>
             </tr>
           </tbody>
@@ -83,15 +77,15 @@ export function renderResultProcessing(data: ResultViewData) {
           <tbody>
             <tr>
               <th class="w-50">Laboratory location</th>
-              <td>${esc(googleLabLocationPlace || labLocation)}</td>
+              <td>${esc(labLocation)}</td>
             </tr>
             <tr>
               <th>Collection time and date</th>
-              <td>${esc(collectionDateTimeFormatted)}</td>
+               <td>${esc(collectionTimeAndDateLab)}</td>
             </tr>
             <tr>
               <th>Production must start by</th>
-              <td>   TBD 🤷‍♂️</td>
+           <td>${esc(productionMustStartBy)}</td>
             </tr>
             <tr>
               <th>Hours to process</th>

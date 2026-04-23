@@ -1,4 +1,4 @@
-// src/functions/convertTimeZone.ts
+
 
 export type ConvertOptions = {
     locale?: string;           // e.g. "en-GB", "cs-CZ"

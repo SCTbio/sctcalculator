@@ -2,6 +2,7 @@ import {Hono} from "hono";
 import {renderForm} from "./logic/summary";
 import {predictionForm} from "./logic/prediction";
 import {getUtcAndLocalTimeForCity} from "./functions/timeForCity";
+import {convertToUnixTimestamp,unixSecondsToUtcAndLocalIso} from "./functions/temporal";
 import {convertIsoToTimeZone, localDateTimeToUtcIso} from "./functions/convertTimeZone";
 import {dateTime as formatDateTime, diffUtcHoursMinutesIso, addHoursToUtcIso} from "./functions/dateTime";
 import {renderResult} from "./views/result";
@@ -176,32 +177,21 @@ index.post("/prediction", async (c) => {
             400
         );
     }
+    const collectionUnixSeconds = convertToUnixTimestamp(collectionDateTime,col.timeZoneId);
 
-    // Google-derived display fields
-    const googleLabLocationPlace = lab.resolvedAddress;
-    const googleCollectionPlace = col.resolvedAddress;
-    const googleCollectionTZ = col.timeZoneName;
-    const googleCollectionTimeDateFormatted = formatDateTime(col.localTimeIso);
-
-
-    const collectionUtc = localDateTimeToUtcIso(collectionDateTime, col.totalOffsetSeconds);
-
-    const collectionDateTimeFormatted = convertIsoToTimeZone(collectionUtc, lab.timeZoneId);
-
-    const productionMustStartByDate = addHoursToUtcIso(collectionUtc, Number(hoursToProcess));
-
+    const collectionTimeAndDateCol = unixSecondsToUtcAndLocalIso(collectionUnixSeconds,col.timeZoneId)
+    const collectionTimeAndDateLab = unixSecondsToUtcAndLocalIso(collectionUnixSeconds,lab.timeZoneId)
+    const productionMustStartBy = unixSecondsToUtcAndLocalIso(collectionUnixSeconds + 3600 * Number(hoursToProcess), lab.timeZoneId)
+const collectionPlaceGoogle  = col.resolvedAddress;
 
     return c.html(
         renderResultProcessing({
-            collectionPlace,
-            collectionDateTimeFormatted,
+            collectionPlaceGoogle,
             labLocation,
             hoursToProcess,
-            googleLabLocationPlace,
-            googleCollectionTZ,
-            productionMustStartByDate,
-            googleCollectionPlace,
-            googleCollectionTimeDateFormatted,
+            collectionTimeAndDateLab,
+            collectionTimeAndDateCol,
+            productionMustStartBy,
         })
     );
 });
