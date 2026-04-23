@@ -8,14 +8,6 @@ export type ResultViewData = {
     collectionTimeAndDateCol:string;
 };
 
-function esc(value: string) {
-    return value
-        .replaceAll("&", "&amp;")
-        .replaceAll("<", "&lt;")
-        .replaceAll(">", "&gt;")
-        .replaceAll('"', "&quot;")
-        .replaceAll("'", "&#039;");
-}
 
 export function renderResultProcessing(data: ResultViewData) {
     const {
@@ -54,12 +46,12 @@ export function renderResultProcessing(data: ResultViewData) {
           <tbody>
             <tr>
               <th class="w-50">Collection city</th>
-              <td>${esc(collectionPlaceGoogle)}</td>
+              <td>${collectionPlaceGoogle}</td>
             </tr>
             <tr>
               <th>Collection time and date</th>
               <td>
-                ${esc(collectionTimeAndDateCol)}
+                ${collectionTimeAndDateCol}
               </td>
             </tr>
           </tbody>
@@ -77,19 +69,19 @@ export function renderResultProcessing(data: ResultViewData) {
           <tbody>
             <tr>
               <th class="w-50">Laboratory location</th>
-              <td>${esc(labLocation)}</td>
+              <td>${labLocation}</td>
             </tr>
             <tr>
               <th>Collection time and date</th>
-               <td>${esc(collectionTimeAndDateLab)}</td>
+               <td>${collectionTimeAndDateLab}</td>
             </tr>
             <tr>
               <th>Production must start by</th>
-           <td>${esc(productionMustStartBy)}</td>
+           <td>${productionMustStartBy}</td>
             </tr>
             <tr>
               <th>Hours to process</th>
-              <td>${esc(hoursToProcess)}</td>
+              <td>${hoursToProcess}</td>
             </tr>
           </tbody>
         </table>
