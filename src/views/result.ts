@@ -2,12 +2,13 @@
 export type ResultViewData = {
     colCity:string;
     laboratoryLocation:string;
-    collectionTimeAndDate:string;
+    collectionTimeAndDateCollection:string;
     productionStartedAt:string;
     days:number;
     hours:number;
     minutes:number;
     roundedTimeNeeded:string;
+    collectionTimeAndDateLab:string;
 };
 
 
@@ -15,12 +16,13 @@ export function renderResult(data: ResultViewData) {
     const {
         colCity,
         laboratoryLocation,
-        collectionTimeAndDate,
+        collectionTimeAndDateCollection,
         productionStartedAt,
         days,
         hours,
         minutes,
         roundedTimeNeeded,
+        collectionTimeAndDateLab,
     } = data;
 
     return `<!doctype html>
@@ -54,7 +56,7 @@ export function renderResult(data: ResultViewData) {
             </tr>
             <tr>
               <th>Collection time and date</th>
-                 <td>${collectionTimeAndDate}</td>
+                 <td>${collectionTimeAndDateCollection}</td>
             </tr>
           </tbody>
         </table>
@@ -75,7 +77,7 @@ export function renderResult(data: ResultViewData) {
             </tr>
             <tr>
               <th>Collection time and date</th>
-                  <td>${collectionTimeAndDate}</td>
+                  <td>${collectionTimeAndDateLab}</td>
             </tr>
             <tr>
               <th>Production started at</th>

@@ -92,7 +92,8 @@ const collectionUtc = convertToUnixTimestamp(collectionDateTime,col.timeZoneId)
     const hours = diffHours.hours;
     const minutes = diffHours.minutes;
     const days = diffHours.days;
-    const collectionTimeAndDate = unixSecondsToUtcAndLocalIso(collectionUtc,lab.timeZoneId);
+    const collectionTimeAndDateCollection = unixSecondsToUtcAndLocalIso(collectionUtc,col.timeZoneId);
+    const collectionTimeAndDateLab = unixSecondsToUtcAndLocalIso(collectionUtc,lab.timeZoneId);
     const productionStartedAt = unixSecondsToUtcAndLocalIso(labUtc,lab.timeZoneId);
     const laboratoryLocation = lab.resolvedAddress;
     const colCity = col.resolvedAddress;
@@ -103,12 +104,13 @@ const collectionUtc = convertToUnixTimestamp(collectionDateTime,col.timeZoneId)
         renderResult({
             colCity,
             laboratoryLocation,
-            collectionTimeAndDate,
+            collectionTimeAndDateCollection,
             productionStartedAt,
             days,
             hours,
             minutes,
             roundedTimeNeeded,
+            collectionTimeAndDateLab,
         })
     );
 });
