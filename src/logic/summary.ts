@@ -53,6 +53,9 @@ export function renderForm(opts?: {
       <li class="nav-item">
         <a class="nav-link" href="/prediction">Prediction</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/documentation">Documentation</a>
+      </li>
     </ul>
 
   </div>

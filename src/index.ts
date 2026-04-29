@@ -6,6 +6,7 @@ import {convertToUnixTimestamp,unixSecondsToUtcAndLocalIso} from "./functions/te
 import {renderResult} from "./views/result";
 import {renderResultProcessing} from "./views/result_processing";
 import {diffUtcDaysHoursMinutesDaysUnix} from "./functions/dateTime";
+import {documentationForm} from "./logic/documentation";
 
 type Env = {
     GOOGLE_MAPS_API_KEY: string;
@@ -111,10 +112,6 @@ const collectionUtc = convertToUnixTimestamp(collectionDateTime,col.timeZoneId)
         })
     );
 });
-
-
-
-
 index.post("/prediction", async (c) => {
 
 
@@ -188,5 +185,7 @@ const collectionPlaceGoogle  = col.resolvedAddress;
         })
     );
 });
+
+index.get("/documentation", (c) => c.html(documentationForm({action: "/documentation"})));
 
 export default index;

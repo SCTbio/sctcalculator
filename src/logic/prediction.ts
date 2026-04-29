@@ -45,6 +45,9 @@ export function predictionForm(opts?: {
       <li class="nav-item">
         <a class="nav-link" href="/">Prediction</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/documentation">Documentation</a>
+      </li>
     </ul>
 
   </div>
