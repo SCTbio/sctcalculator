@@ -1,9 +1,13 @@
 {
   "dependencies": {
-    "@googlemaps/google-maps-services-js": "^3.4.2",
-    "@js-temporal/polyfill": "^0.5.1"
+    "@js-temporal/polyfill": "^0.5.1",
+    "hono": "^4.13.16"
   },
   "scripts": {
-    "dev": "wrangler dev"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.156.1"
   }
 }
