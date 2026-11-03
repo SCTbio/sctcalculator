@@ -188,6 +188,28 @@ const collectionPlaceGoogle  = col.resolvedAddress;
     );
 });
 
+// TEMPORARY diagnostic - remove after fixing the API key issue
+index.get("/debug-key", (c) => {
+    const k = (c.env as any).GOOGLE_MAPS_API_KEY;
+    const info = {
+        bindingNames: Object.keys(c.env ?? {}),
+        type: typeof k,
+        length: typeof k === "string" ? k.length : null,
+        startsWith: typeof k === "string" ? k.slice(0, 4) : null,
+        hasWhitespace: typeof k === "string" ? /\s/.test(k) : null,
+        hasQuotes: typeof k === "string" ? /["']/.test(k) : null,
+    };
+    return c.json(info);
+});
+
 index.get("/documentation", (c) => c.html(documentationForm({action: "/documentation"})));
+
+index.onError((err, c) => {
+    console.error("Unhandled error:", err);
+    return c.html(
+        `<h2>Something went wrong</h2><p>${String(err?.message ?? err).replace(/[<>&]/g, "")}</p><p><a href="/">Back</a></p>`,
+        500
+    );
+});
 
 export default index;
